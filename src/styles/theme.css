@@ -1,0 +1,80 @@
+:root {
+  --background: #0b0f19;
+  --foreground: #e6eaf2;
+  --muted: #a7b0c0;
+  --card: rgba(12, 18, 36, 0.68);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --primary: #6c63ff;
+  --secondary: #00e5ff;
+  --accent: #ff4d8d;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--foreground);
+  background:
+    radial-gradient(circle at top left, rgba(108, 99, 255, 0.2), transparent 34%),
+    radial-gradient(circle at top right, rgba(0, 229, 255, 0.16), transparent 28%),
+    radial-gradient(circle at 50% 20%, rgba(255, 77, 141, 0.12), transparent 26%),
+    linear-gradient(180deg, #0b0f19 0%, #0a1020 45%, #090d16 100%);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at center, black, transparent 82%);
+  opacity: 0.4;
+}
+
+::selection {
+  background: rgba(0, 229, 255, 0.25);
+  color: #fff;
+}
+
+.glass-card {
+  border: 1px solid var(--card-border);
+  background: var(--card);
+  backdrop-filter: blur(24px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+.loader-ring {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--secondary);
+  border-right-color: var(--primary);
+  animation: spin 1s linear infinite;
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floaty {
+  animation: float 6s ease-in-out infinite;
+}
